@@ -25,7 +25,10 @@ def configure_cors(app) -> None:
     https://your-app.vercel.app), never "*" — a wildcard would let any
     website's JavaScript call this backend on a visitor's behalf.
     """
-    allowed_origins = [settings.frontend_origin]
+    allowed_origins = [
+        origin.strip()
+        for origin in settings.frontend_origin.strip(",")
+    ]
 
     app.add_middleware(
         CORSMiddleware,
