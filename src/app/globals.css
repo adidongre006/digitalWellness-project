@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   DESIGN SYSTEM — Purple Digital Wellness
+   ---------------------------------------------------------------------------
+   Tailwind v4 is CSS-first: every design token below is a real CSS custom
+   property (so it can be swapped per data-theme attribute) AND a Tailwind
+   utility generator via @theme inline. No tailwind.config.js exists or is
+   needed. Three themes share the same token *names* so every component
+   written against bg-background / text-foreground / etc. automatically
+   re-themes without per-component conditionals.
+   ========================================================================= */
+
+:root {
+  /* ---- Purple Midnight (default) -------------------------------------- */
+  --background: #090814;
+  --background-secondary: #100d20;
+  --sidebar: #0b0917;
+  --card: #17132a;
+  --card-foreground: #f8fafc;
+  --primary: #8250f7;
+  --primary-foreground: #f8fafc;
+  --accent: #a855f7;
+  --accent-soft: #c4b5fd;
+  --foreground: #f8fafc;
+  --muted-foreground: #a1a1aa;
+  --subtle-foreground: #71717a;
+  --border: #29233d;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --radius: 0.875rem;
+  color-scheme: dark;
+}
+
+:root[data-theme="sanctuary"] {
+  /* ---- Sanctuary: off-white, emerald accent, charcoal text -------------- */
+  --background: #faf9f6;
+  --background-secondary: #f3f1ec;
+  --sidebar: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #1f2320;
+  --primary: #0f9d6e;
+  --primary-foreground: #ffffff;
+  --accent: #10b981;
+  --accent-soft: #a7f3d0;
+  --foreground: #1f2320;
+  --muted-foreground: #52534e;
+  --subtle-foreground: #7a7b74;
+  --border: #e4e1d8;
+  --success: #0f9d6e;
+  --warning: #b45309;
+  --error: #b91c1c;
+  color-scheme: light;
+}
+
+:root[data-theme="warm"] {
+  /* ---- Warm Minimalist: cream, terracotta accent, charcoal text --------- */
+  --background: #f7f1e8;
+  --background-secondary: #efe6d8;
+  --sidebar: #fbf7ef;
+  --card: #fffdf9;
+  --card-foreground: #2a2420;
+  --primary: #c2622f;
+  --primary-foreground: #fffdf9;
+  --accent: #d97757;
+  --accent-soft: #f1c6a8;
+  --foreground: #2a2420;
+  --muted-foreground: #5c5349;
+  --subtle-foreground: #847a6d;
+  --border: #e6dac5;
+  --success: #3f7d52;
+  --warning: #b45309;
+  --error: #b3401f;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-sidebar: var(--sidebar);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --radius-card: var(--radius);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-lexend), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus ring everywhere, regardless of theme — required for WCAG 2.2 AA */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth, restrained theme transition — not an entrance animation */
+html {
+  transition: background-color 150ms ease;
+}
+
+/* Minimal markdown styling for chatbot messages — deliberately plain,
+   matching "code-free, readable conversational output" from the spec. */
+.prose-chat p {
+  margin: 0 0 0.6em;
+}
+.prose-chat p:last-child {
+  margin-bottom: 0;
+}
+.prose-chat ul,
+.prose-chat ol {
+  margin: 0.4em 0 0.6em;
+  padding-left: 1.3em;
+}
+.prose-chat li {
+  margin: 0.2em 0;
+}
+.prose-chat strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.prose-chat a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-chat code {
+  background: var(--background-secondary);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.85em;
+}
+
+.ambient-glow {
+  background: radial-gradient(
+    600px circle at 50% 0%,
+    color-mix(in srgb, var(--primary) 18%, transparent),
+    transparent 70%
+  );
+}
+
+.BORDER_ZERO {
+  border: none;
+  outline: none;
+}
+
+.FONT_MONO {
+  font-family: monospace;
+}
+
+.gradient {
+  background: linear-gradient(
+    30deg,
+    rgb(255, 0, 153),
+    rgb(255, 0, 255),
+    rgb(68, 0, 255),
+    rgb(135, 49, 227),
+    rgb(255, 0, 115),
+    rgb(253, 228, 64),
+    rgb(6, 205, 255),
+    rgb(255, 0, 153),
+    rgb(255, 0, 255),
+    rgb(68, 0, 255),
+    rgb(135, 49, 227),
+    rgb(255, 0, 115),
+    rgb(181, 63, 227),
+    rgb(6, 205, 255),
+    rgb(68, 0, 255),
+    rgb(135, 49, 227),
+    rgb(255, 0, 115),
+    rgb(181, 63, 227),
+    rgb(6, 205, 255)
+  );
+  background-size: 200%;
+  background-clip: text;
+  color: transparent;
+  animation: grad 3s linear infinite;
+  backdrop-filter:blur(20px) ;
+} 
+
+@keyframes grad {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}

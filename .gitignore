@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+build/
+next-env.d.ts
+
+# Production
+dist/
+
+# Env files — NEVER commit real secrets
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Testing
+coverage/
+playwright-report/
+test-results/
+.vitest/
+
+# Python
+backend/__pycache__/
+backend/**/__pycache__/
+backend/.venv/
+backend/*.egg-info/
+backend/.pytest_cache/
+
+# Drizzle
+drizzle/meta/
+
+# Misc
+.DS_Store
+*.pem
+npm-debug.log*
+.vercel

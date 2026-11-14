@@ -1,0 +1,36 @@
+# --- Web framework -----------------------------------------------------
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+
+# --- AI orchestration ----------------------------------------------------
+# langchain-xai wraps xAI's Grok models (BaseChatOpenAI-compatible) behind
+# LangChain's standard ChatModel interface. If this deployment is actually
+# meant to call Groq's hosted gpt-oss-120b instead of xAI's Grok (the
+# project brief named both, which point to two different providers — see
+# backend/app/ai/model.py for the exact note), swap this one line for
+# `langchain-groq` and follow the instructions in model.py.
+#
+# langchain-core is intentionally NOT pinned to an exact version here: both
+# langchain and langchain-xai pin their own compatible langchain-core range,
+# and pip's resolver picks the version that satisfies both — pinning a
+# third, independent version above was found (by actually running `pip
+# install` during this project's construction) to create an unsatisfiable
+# conflict. See docs/REVISION_LOG.md.
+langchain
+langchain-xai
+
+# --- Database --------------------------------------------------------------
+# Talks to the SAME Neon Postgres database Drizzle manages on the frontend
+# (same `resources` table), so the chatbot never has its own hardcoded catalog.
+asyncpg
+
+# --- Utilities ---------------------------------------------------------
+python-dotenv
+slowapi==0.1.9        # per-IP rate limiting for /api/chat
+httpx==0.28.1            # used by the test suite
+
+# --- Testing -------------------------------------------------------------
+pytest
+pytest-asyncio
