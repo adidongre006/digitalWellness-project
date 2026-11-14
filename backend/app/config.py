@@ -27,9 +27,9 @@ class Settings(BaseSettings):
     frontend_origin: str = "http://localhost:3000"
 
     # --- Request limits -------------------------------------------------------
-    max_message_length: int = 7000
+    max_message_length: int = 3000
     max_history_messages: int = 50
-    chat_rate_limit: str = "200/minute"  # slowapi format: "<count>/<period>"
+    chat_rate_limit: str = "20/minute"  # slowapi format: "<count>/<period>"
 
     # --- Misc -----------------------------------------------------------------
     environment: str = "development"  # "development" | "production"
