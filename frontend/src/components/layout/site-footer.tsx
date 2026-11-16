@@ -39,9 +39,9 @@ export function SiteFooter() {
      <div className="border-t border-border px-4 py-6 text-center text-[15px] FONT_MONO  bg-[#090814] gradient sm:px-6 lg:px-8">
   <div className="flex items-center justify-center gap-1">
     <span>
-       <span className="text-[18px] ">©</span> {new Date().getFullYear()} Digital Wellness Resource Hub | Build with passion &
-    </span>
-    <Image
+       <span className="text-[17px] ">©</span>  {new Date().getFullYear()} Unplug | Build with passion &
+    </span>&nbsp;
+     <Image
       alt="greenheart"
       src="/greenheart.svg"
       width={20}
